@@ -1,0 +1,2489 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>វីរជនកម្ពុជា | Cambodian Heroes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bayon&family=Kantumruy+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://flagcdn.com/16x12/kh.png" type="image/png">
+    <style>
+        :root {
+            --primary-color: #032e45;
+            --secondary-color: #d4af37;
+            --accent-color: #a61c1c;
+        }
+        
+        body {
+            font-family: 'Kantumruy Pro', sans-serif;
+        }
+        
+        .khmer-heading {
+            font-family: 'Bayon', sans-serif;
+            letter-spacing: 1px;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(rgba(3, 46, 69, 0.85), rgba(3, 46, 69, 0.9)), url('https://media.istockphoto.com/id/1069751796/photo/cambodia-flag-waving-cloudy-sky-background.jpg?s=612x612&w=0&k=20&c=NLJgCZ1lp08hMFlaB5du5WbtJINBVasXisJg7IgxOn8=');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .soldier-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .soldier-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #a61c1c;
+        }
+        
+        .lang-active {
+            background-color: #032e45;
+            color: white;
+        }
+        
+        /* Memorial wall effect */
+        .memorial-wall {
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23032e45' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        
+        /* Mobile menu animation */
+        .mobile-menu {
+            transition: all 0.3s ease;
+            max-height: 0;
+            overflow: hidden;
+        }
+        
+        .mobile-menu.open {
+            max-height: 300px;
+        }
+        
+        /* Fade in animation for content */
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Square image container */
+        .soldier-img-container {
+            position: relative;
+            width: 100%;
+            padding-top: 100%; /* 1:1 Aspect Ratio - Makes it square */
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        /* Soldier image cursor pointer */
+        .soldier-img-container:hover .soldier-img {
+            opacity: 0.9;
+        }
+        
+        /* Actual image inside container */
+        .soldier-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: opacity 0.3s ease;
+        }
+        
+        /* Small flag on image corner */
+        .img-flag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 20px;
+            background: linear-gradient(to bottom, #032e45 33%, #ffffff 33%, #ffffff 66%, #a61c1c 66%);
+            border-radius: 2px;
+            border: 1px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            z-index: 10; /* Make sure flag is above image */
+        }
+        
+        /* If you have a custom flag image file */
+        .flag-logo {
+            width: 40px;
+            height: 28px;
+            background-image: url('img/cambodia-flag.jpg'); /* Your custom flag image */
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 2px;
+        }
+        
+        .flag-logo::after {
+            display: none; /* Remove the symbol */
+        }
+        
+        .img-flag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 20px;
+            background-image: url('img/cambodia-flag.jpg'); /* Same custom flag image */
+            background-size: cover;
+            border-radius: 2px;
+            border: 1px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+        
+        /* Compact language toggle */
+        .lang-toggle {
+            width: 50px;
+            height: 30px;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 0;
+        }
+        
+        /* Card layout adjustments */
+        @media (min-width: 1024px) {
+            .card-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        @media (max-width: 1023px) and (min-width: 768px) {
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Fallback styling if image doesn't load */
+        .soldier-img.fallback {
+            background: linear-gradient(to bottom right, #032e45, #1a5276);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .soldier-img.fallback::before {
+            content: "🫡";
+            font-size: 2.5rem;
+        }
+        
+        /* Modal animations */
+        #imageModal {
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal-content {
+            animation: modalFadeIn 0.3s ease-out;
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-40">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <div class="flag-logo mr-3"></div>
+                    <div>
+                        <h1 class="khmer-heading text-xl md:text-2xl text-blue-900" id="siteTitle">វីរជនកម្ពុជា</h1>
+                        <p class="text-xs text-gray-600" id="siteSubtitle">ក្នុងការការពារព្រំដែនជាតិ</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <!-- Compact Language Toggle -->
+                    <button id="toggleLang" class="lang-toggle bg-white text-gray-800 rounded shadow border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition">
+                        <span id="langText" class="font-bold">EN</span>
+                    </button>
+                    
+                    <!-- Desktop Menu -->
+                    <div class="hidden md:flex space-x-8">
+                        <a href="#home" class="text-blue-900 font-semibold hover:text-red-700 transition nav-link" data-en="Home" data-kh="ទំព័រដើម">ទំព័រដើម</a>
+                        <a href="#memorial" class="text-blue-900 font-semibold hover:text-red-700 transition nav-link" data-en="Memorial" data-kh="វីរជន">វីរជន</a>
+                        <a href="#history" class="text-blue-900 font-semibold hover:text-red-700 transition nav-link" data-en="History" data-kh="ប្រវត្តិ">ប្រវត្តិ</a>
+                        <a href="#about" class="text-blue-900 font-semibold hover:text-red-700 transition nav-link" data-en="About" data-kh="អំពីយើង">អំពីយើង</a>
+                    </div>
+                    
+                    <!-- Mobile menu button -->
+                    <button id="mobileMenuBtn" class="md:hidden text-blue-900 text-2xl">
+                        <i class="fas fa-bars" id="menuIcon"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="mobile-menu md:hidden bg-white border-t">
+                <div class="flex flex-col space-y-0 py-2">
+                    <a href="#home" class="text-blue-900 font-semibold py-3 px-4 hover:bg-gray-100 transition nav-link" data-en="Home" data-kh="ទំព័រដើម">ទំព័រដើម</a>
+                    <a href="#memorial" class="text-blue-900 font-semibold py-3 px-4 hover:bg-gray-100 transition nav-link" data-en="Memorial" data-kh="វីរជន">វីរជន</a>
+                    <a href="#history" class="text-blue-900 font-semibold py-3 px-4 hover:bg-gray-100 transition nav-link" data-en="History" data-kh="ប្រវត្តិ">ប្រវត្តិ</a>
+                    <a href="#about" class="text-blue-900 font-semibold py-3 px-4 hover:bg-gray-100 transition nav-link" data-en="About" data-kh="អំពីយើង">អំពីយើង</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg text-white py-16 md:py-24">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center fade-in">
+                <h2 class="khmer-heading text-3xl md:text-5xl mb-6" id="heroTitle">ការរំលឹកដល់វីរជនកម្ពុជា</h2>
+                
+                <div class="w-24 h-1 bg-yellow-500 mx-auto mb-8"></div>
+                
+                <p class="text-lg md:text-xl mb-10 leading-relaxed" id="heroText">ជាតិយើងនឹងចងចាំជារៀងរហូតចំពោះការតស៊ូ និងការលះបង់ដ៏ឧត្តមរបស់វីរជនកម្ពុជាដែលបានបូជាជីវិតក្នុងការការពារបូរណភាពទឹកដីជាតិ។</p>
+                
+                <a href="#memorial" class="inline-block bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
+                    <span id="heroButton">វីរជនដែលបានពលី</span>
+                    <i class="fas fa-arrow-down ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Memorial Wall Section -->
+    <section id="memorial" class="py-16 memorial-wall">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="khmer-heading text-3xl md:text-4xl text-blue-900 mb-4" id="memorialTitle">វីរជន</h2>
+                
+                <div class="w-20 h-1 bg-red-700 mx-auto mb-6"></div>
+                
+                <p class="text-gray-700 max-w-2xl mx-auto" id="memorialText">យើងសូមថ្លែងអំណរគុណដល់ទាហានកម្ពុជាដែលបានពលីក្នុងសមរភូមិ ដើម្បីការពារព្រំដែនជាតិពីការឈ្លានពាន។</p>
+            </div>
+            
+            <!-- Soldiers Grid -->
+            <div class="card-grid grid gap-4 md:gap-8">
+
+                <!-- Soldier 01 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-01.jpg"
+                             style="background-image: url('img/hero-01.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ០១</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 02 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-02.jpg"
+                             style="background-image: url('img/hero-02.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ០២</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 03 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-03.jpg"
+                             style="background-image: url('img/hero-03.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ០៣</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 04 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-04.jpg"
+                             style="background-image: url('img/hero-04.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ០៤</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 05 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-05.jpg"
+                             style="background-image: url('img/hero-05.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ០៥</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 06 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-06.jpg"
+                             style="background-image: url('img/hero-06.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ០៦</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 07 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-07.jpg"
+                             style="background-image: url('img/hero-07.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ០៧</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 08 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-08.jpg"
+                             style="background-image: url('img/hero-08.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ០៨</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 09 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-09.jpg"
+                             style="background-image: url('img/hero-09.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ០៩</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 10 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-10.jpg"
+                             style="background-image: url('img/hero-10.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ១០</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 11 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-11.jpg"
+                             style="background-image: url('img/hero-11.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ១១</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 12 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-12.jpg"
+                             style="background-image: url('img/hero-12.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ១២</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 13 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-13.jpg"
+                             style="background-image: url('img/hero-13.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ១៣</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 14 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-14.jpg"
+                             style="background-image: url('img/hero-14.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ១៤</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 15 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-15.jpg"
+                             style="background-image: url('img/hero-15.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ១៥</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 16 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-16.jpg"
+                             style="background-image: url('img/hero-16.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ១៦</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 17 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-17.jpg"
+                             style="background-image: url('img/hero-17.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ១៧</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 18 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-18.jpg"
+                             style="background-image: url('img/hero-18.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ១៨</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 19 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-19.jpg"
+                             style="background-image: url('img/hero-19.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ១៩</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 20 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-20.jpg"
+                             style="background-image: url('img/hero-20.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ២០</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 21 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-21.jpg"
+                             style="background-image: url('img/hero-21.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ២១</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 22 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-22.jpg"
+                             style="background-image: url('img/hero-22.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ២២</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 23 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-23.jpg"
+                             style="background-image: url('img/hero-23.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ២៣</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 24 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-24.jpg"
+                             style="background-image: url('img/hero-24.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ២៤</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 25 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-25.jpg"
+                             style="background-image: url('img/hero-25.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ២៥</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 26 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-26.jpg"
+                             style="background-image: url('img/hero-26.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ២៦</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 27 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-27.jpg"
+                             style="background-image: url('img/hero-27.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ២៧</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 28 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-28.jpg"
+                             style="background-image: url('img/hero-28.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ២៨</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 29 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-29.jpg"
+                             style="background-image: url('img/hero-29.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ២៩</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 30 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-30.jpg"
+                             style="background-image: url('img/hero-30.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៣០</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 31 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-31.jpg"
+                             style="background-image: url('img/hero-31.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៣១</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 32 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-32.jpg"
+                             style="background-image: url('img/hero-32.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៣២</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 33 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-33.jpg"
+                             style="background-image: url('img/hero-33.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៣៣</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 34 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-34.jpg"
+                             style="background-image: url('img/hero-34.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៣៤</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 35 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-35.jpg"
+                             style="background-image: url('img/hero-35.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៣៥</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 36 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-36.jpg"
+                             style="background-image: url('img/hero-36.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៣៦</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 37 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-37.jpg"
+                             style="background-image: url('img/hero-37.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៣៧</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 38 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-38.jpg"
+                             style="background-image: url('img/hero-38.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៣៨</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 39 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-39.jpg"
+                             style="background-image: url('img/hero-39.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៣៩</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 40 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-40.jpg"
+                             style="background-image: url('img/hero-40.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៤០</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 41 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-41.jpg"
+                             style="background-image: url('img/hero-41.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៤១</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 42 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-42.jpg"
+                             style="background-image: url('img/hero-42.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៤២</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 43 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-43.jpg"
+                             style="background-image: url('img/hero-43.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៤៣</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 44 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-44.jpg"
+                             style="background-image: url('img/hero-44.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៤៤</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 45 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-45.jpg"
+                             style="background-image: url('img/hero-45.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៤៥</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 46 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-46.jpg"
+                             style="background-image: url('img/hero-46.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៤៦</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 47 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-47.jpg"
+                             style="background-image: url('img/hero-47.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៤៧</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 48 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-48.jpg"
+                             style="background-image: url('img/hero-48.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៤៨</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 49 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-49.jpg"
+                             style="background-image: url('img/hero-49.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៤៩</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 50 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-50.jpg"
+                             style="background-image: url('img/hero-50.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៥០</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 51 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-51.jpg"
+                             style="background-image: url('img/hero-51.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៥១</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 52 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-52.jpg"
+                             style="background-image: url('img/hero-52.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៥២</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 53 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-53.jpg"
+                             style="background-image: url('img/hero-53.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៥៣</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 54 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-54.jpg"
+                             style="background-image: url('img/hero-54.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៥៤</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 55 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-55.jpg"
+                             style="background-image: url('img/hero-55.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៥៥</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 56 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-56.jpg"
+                             style="background-image: url('img/hero-56.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៥៦</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 57 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-57.jpg"
+                             style="background-image: url('img/hero-57.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៥៧</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 58 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-58.jpg"
+                             style="background-image: url('img/hero-58.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៥៨</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 59 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-59.jpg"
+                             style="background-image: url('img/hero-59.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៥៩</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 60 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-60.jpg"
+                             style="background-image: url('img/hero-60.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៦០</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 61 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-61.jpg"
+                             style="background-image: url('img/hero-61.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៦១</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 62 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-62.jpg"
+                             style="background-image: url('img/hero-62.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៦២</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 63 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-63.jpg"
+                             style="background-image: url('img/hero-63.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៦៣</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 64 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-64.jpg"
+                             style="background-image: url('img/hero-64.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៦៤</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 65 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-65.jpg"
+                             style="background-image: url('img/hero-65.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៦៥</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 66 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-66.jpg"
+                             style="background-image: url('img/hero-66.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៦៦</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 67 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-67.jpg"
+                             style="background-image: url('img/hero-67.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៦៧</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 68 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-68.jpg"
+                             style="background-image: url('img/hero-68.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៦៨</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 69 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-69.jpg"
+                             style="background-image: url('img/hero-69.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៦៩</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 70 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-70.jpg"
+                             style="background-image: url('img/hero-70.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៧០</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 71 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-71.jpg"
+                             style="background-image: url('img/hero-71.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៧១</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 72 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-72.jpg"
+                             style="background-image: url('img/hero-72.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៧២</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 73 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-73.jpg"
+                             style="background-image: url('img/hero-73.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៧៣</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 74 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-74.jpg"
+                             style="background-image: url('img/hero-74.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៧៤</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 75 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-75.jpg"
+                             style="background-image: url('img/hero-75.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៧៥</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 76 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-76.jpg"
+                             style="background-image: url('img/hero-76.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៧៦</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 77 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-77.jpg"
+                             style="background-image: url('img/hero-77.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៧៧</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 78 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-78.jpg"
+                             style="background-image: url('img/hero-78.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៧៨</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 79 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-79.jpg"
+                             style="background-image: url('img/hero-79.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៧៩</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 80 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-80.jpg"
+                             style="background-image: url('img/hero-80.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៨០</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 81 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-81.jpg"
+                             style="background-image: url('img/hero-81.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៨១</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 82 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-82.jpg"
+                             style="background-image: url('img/hero-82.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៨២</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 83 -->
+                <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-83.jpg"
+                             style="background-image: url('img/hero-83.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៨៣</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div>
+    
+
+                <!-- Soldier 84 -->
+                <!-- <div class="soldier-card bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <div class="soldier-img-container">
+                        <div class="soldier-img fallback"
+                             data-src="img/hero-84.jpg"
+                             style="background-image: url('img/hero-84.jpg');">
+                        </div>
+                        <div class="img-flag"></div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2">វីរជន លេខ ៨៤</h3>
+                        <p class="text-gray-600 text-sm md:text-base mb-3">កងទ័ពជើងគោក</p>
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center text-xs md:text-sm text-gray-500 mb-3 md:mb-4">
+                            <span><i class="fas fa-map-marker-alt mr-1"></i> ព្រំដែនកម្ពុជា-ថៃ</span>
+                        </div>
+                    </div>
+                </div> -->
+    
+</div>
+            
+            <!-- Tribute Button -->
+            <div class="text-center mt-12">
+                <button id="tributeBtn" class="bg-blue-900 hover:bg-blue-800 text-white font-bold py-3 px-6 md:px-8 rounded-lg transition duration-300 inline-flex items-center text-sm md:text-base">
+                    <i class="fas fa-candle mr-2"></i>
+                    <span id="tributeBtnText">អុជទៀនធ្វើសក្ការៈ</span>
+                </button>
+                
+                <!-- Candle Tribute Area -->
+                <div id="candleArea" class="mt-8 hidden">
+                    <div class="flex flex-wrap justify-center gap-3 md:gap-4">
+                        <div class="candle animate-pulse">
+                            <div class="w-3 h-6 md:w-4 md:h-8 bg-yellow-300 mx-auto rounded-t-lg"></div>
+                            <div class="w-4 h-1 md:w-6 md:h-2 bg-yellow-500 mx-auto"></div>
+                        </div>
+                        <div class="candle animate-pulse" style="animation-delay: 0.2s;">
+                            <div class="w-3 h-6 md:w-4 md:h-8 bg-yellow-300 mx-auto rounded-t-lg"></div>
+                            <div class="w-4 h-1 md:w-6 md:h-2 bg-yellow-500 mx-auto"></div>
+                        </div>
+                        <div class="candle animate-pulse" style="animation-delay: 0.4s;">
+                            <div class="w-3 h-6 md:w-4 md:h-8 bg-yellow-300 mx-auto rounded-t-lg"></div>
+                            <div class="w-4 h-1 md:w-6 md:h-2 bg-yellow-500 mx-auto"></div>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-gray-700 text-sm md:text-base" id="tributeMessage">ពួកយើងនឹងមិនភ្លេចអ្នកទេ។ សូមអរគុណចំពោះការលះបង់របស់អ្នកដើម្បីជាតិមាតុភូមិ។</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- History Section -->
+    <section id="history" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="khmer-heading text-3xl md:text-4xl text-blue-900 mb-4" id="historyTitle">ប្រវត្តិសាស្ត្រនៃការការពារព្រំដែន</h2>
+                
+                <div class="w-20 h-1 bg-red-700 mx-auto mb-6"></div>
+                
+                <p class="text-gray-700 max-w-3xl mx-auto" id="historyText">ការការពារបូរណភាពទឹកដីជាតិគឺជាកាតព្វកិច្ចសំខាន់បំផុតមួយរបស់ប្រទេសជាតិ។ យើងត្រូវតែចងចាំពីការតស៊ូមេត្រីនិងការលះបង់របស់វីរជន។</p>
+            </div>
+            
+            <!-- Timeline -->
+            <div class="max-w-3xl mx-auto">
+                <div class="relative border-l-2 border-blue-900 ml-4 md:ml-0">
+                    <!-- Timeline Item 1 -->
+                    <div class="timeline-item mb-10 ml-6 md:ml-8">
+                        <div class="bg-white p-4 md:p-6 rounded-lg shadow-md">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
+                                <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2 md:mb-0" id="timeline1Title">តំបន់មុំបី</h3>
+                                <span class="bg-red-100 text-red-800 text-xs md:text-sm font-semibold px-3 py-1 rounded self-start md:self-auto">28 ឧសភា​ 2025</span>
+                            </div>
+                            <p class="text-gray-700 text-sm md:text-base" id="timeline1Desc">ករណីផ្ទុះអាវុធនៅតំបន់មុំបី យោធាថៃបានបាញ់ប្រហារទៅលើទាហានកម្ពុជាស្លា​ប់​នៅ​ក្នុង​លេណដ្ឋាន</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Item 2 -->
+                    <div class="timeline-item mb-10 ml-6 md:ml-8">
+                        <div class="bg-white p-4 md:p-6 rounded-lg shadow-md">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
+                                <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2 md:mb-0" id="timeline2Title">ការព្រមានព្រំដែនបន្ត</h3>
+                                <span class="bg-red-100 text-red-800 text-xs md:text-sm font-semibold px-3 py-1 rounded self-start md:self-auto">2025</span>
+                            </div>
+                            <p class="text-gray-700 text-sm md:text-base" id="timeline2Desc">ការប៉ះទង្គិចព្រំដែននៅតែបន្ត ដោយសារទាហានថៃបានធ្វើការដាក់បន្លាលួសនៅលើទឹកដីកម្ពុជានិងផ្ទះសម្បែងប្រជាជនដែលរំលោភលើដែនដីកម្ពុជា ក៏ប៉ុន្តែកម្ពុជាមានការអត់ធ្មត់ខ្ពស់ ដើម្បីបញ្ក្ចៀសសង្រ្កាម។</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Item 3 -->
+                    <div class="timeline-item mb-10 ml-6 md:ml-8">
+                        <div class="bg-white p-4 md:p-6 rounded-lg shadow-md">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-2">
+                                <h3 class="khmer-heading text-lg md:text-xl text-blue-900 mb-2 md:mb-0" id="timeline3Title">ថៃឈ្លានពានកម្ពុជាម្ដងទៀត</h3>
+                                <span class="bg-red-100 text-red-800 text-xs md:text-sm font-semibold px-3 py-1 rounded self-start md:self-auto">07 ធ្នូ 2025 - បច្ចុបន្ន</span>
+                            </div>
+                            <p class="text-gray-700 text-sm md:text-base" id="timeline3Desc">ម៉ោងប្រហែល ០២:១៥ រសៀល ថ្ងៃទី ០៧ ខែធ្នូ កងកម្លាំងយោធាថៃបានផ្តួចផ្តើមការវាយប្រហារទៅលើកងកម្លាំងកម្ពុជានៅតំបន់ព្រលៀនថ្ម ក្នុងស្រុកជាំក្សាន្ត ខេត្តព្រះវិហារ។ កងកម្លាំងកម្ពុជាបានទាក់ទងទៅភាគីថៃភ្លាមៗ ដើម្បីបញ្ឈប់ការបាញ់ប្រហារមកលើកងកម្លាំងកម្ពុជា ដោយសារភាគីកម្ពុជាមិនបានសងសឹក។ ក្រោយមក កងកម្លាំងយោធាថៃបានបញ្ឈប់ការបាញ់ប្រហារនៅម៉ោង ០២:៣២ រសៀល។ ​បន្ទាប់មកថៃក៏នៅតែបន្តឈ្លានពានចូលទឹកដីកម្ពុជា កម្ពុជាបានប្រើសិទ្ធការពារខ្លួនតបតទៅថៃវិញ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12 fade-in">
+                    <h2 class="khmer-heading text-3xl md:text-4xl text-blue-900 mb-4" id="aboutTitle">អំពីគេហទំព័រនេះ</h2>
+                    
+                    <div class="w-20 h-1 bg-red-700 mx-auto mb-6"></div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center">
+                    <div>
+                        <h3 class="khmer-heading text-xl md:text-2xl text-blue-900 mb-4" id="purposeTitle">គោលបំណង</h3>
+                        
+                        <p class="text-gray-700 mb-4 md:mb-6 text-sm md:text-base" id="purposeText1">គេហទំព័រនេះត្រូវបានបង្កើតឡើងដើម្បីរំលឹក និងគោរពវីរជនកម្ពុជាដែលបានលះបង់ជីវិតក្នុងការការពារបូរណភាពទឹកដីជាតិពីការឈ្លានពាន។</p>
+                        <p class="text-gray-700 text-sm md:text-base" id="purposeText2">យើងជឿជាក់ថា ការចងចាំការលះបង់របស់ពួកគេគឺជាវិធីមួយដើម្បីថ្លែងអំណរគុណ និងធានាថាក្មេងៗជំនាន់ក្រោយនឹងដឹងពីប្រវត្តិសាស្ត្ររបស់ជាតិ។</p>
+                    </div>
+                    
+                    <div class="bg-gray-100 p-6 md:p-8 rounded-xl border border-gray-300">
+                        <h3 class="khmer-heading text-xl md:text-2xl text-blue-900 mb-4" id="messageTitle">សារពីអ្នកបង្កើត</h3>
+                        
+                        <p class="text-gray-700 mb-4 md:mb-6 text-sm md:text-base" id="messageText">"ការលះបង់របស់វីរជនកម្ពុជាគួរតែត្រូវបានគេចងចាំជានិរន្តរ៍។ ពួកគាត់បានពលីជីវិតដើម្បីការពារមាតុភូមិរបស់ពួកយើង។ យើងត្រូវតែដឹងគុណនិងចងចាំពូកគាត់។"</p>
+                        
+                        <div class="flex items-center">
+                            <div class="flag-logo mr-4"></div>
+                            <div>
+                                <h4 class="font-bold text-blue-900 text-sm md:text-base" id="creatorTitle">ហាក់ ឆៃហ៊ាង</h4>
+                                <p class="text-gray-600 text-xs md:text-sm" id="creatorLocation">ភ្នំពេញ, កម្ពុជា</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center">
+                        <div class="flag-logo mr-3"></div>
+                        <div>
+                            <h3 class="khmer-heading text-xl" id="footerTitle">វីរជនកម្ពុជា</h3>
+                            <p class="text-gray-300 text-sm mt-1" id="footerSubtitle">ក្នុងការការពារព្រំដែនជាតិ</p>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-gray-300 max-w-md text-sm" id="footerText">គេហទំព័រនេះឧទ្ទិសដល់វីរជនកម្ពុជាទាំងឡាយដែលបានលះបង់ជីវិតក្នុងការការពារបូរណភាពទឹកដីជាតិ។</p>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <p class="text-gray-300 mb-4 text-sm md:text-base" id="copyright">© 2025 វីរជនកម្ពុជា. រក្សាសិទ្ធិគ្រប់យ៉ាង។</p>
+                    
+                    <div class="flex space-x-4 justify-center md:justify-end">
+                        <a href="https://www.facebook.com/Lee.Minheang623" class="text-gray-300 hover:text-white text-xl">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://t.me/Emma_Heang" class="text-gray-300 hover:text-white text-xl">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-blue-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+                <p id="footerQuote">"យើងនឹងមិនភ្លេចការលះបង់របស់អ្នកទេ"</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Image Modal -->
+    <div id="imageModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black bg-opacity-90" id="modalOverlay"></div>
+        
+        <div class="relative h-full w-full flex items-center justify-center p-4">
+            <button id="closeModal" class="absolute top-4 right-4 md:top-8 md:right-8 text-white text-3xl md:text-4xl z-50 hover:text-yellow-400 transition">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <button id="prevImage" class="absolute left-4 md:left-8 text-white text-2xl md:text-3xl z-50 hover:text-yellow-400 transition">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <button id="nextImage" class="absolute right-4 md:right-8 text-white text-2xl md:text-3xl z-50 hover:text-yellow-400 transition">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <div class="max-w-4xl w-full max-h-[85vh] flex flex-col items-center modal-content">
+                <div class="w-full bg-gray-900 rounded-t-lg p-4 flex justify-between items-center">
+                    <div class="text-white">
+                        <h3 id="modalSoldierName" class="khmer-heading text-lg md:text-xl"></h3>
+                        <p id="modalSoldierInfo" class="text-gray-300 text-sm md:text-base"></p>
+                        <p id="modalSoldierLocation" class="text-gray-400 text-xs md:text-sm"></p>
+                    </div>
+                    <div class="flag-logo"></div>
+                </div>
+                
+                <div class="w-full bg-black flex items-center justify-center rounded-b-lg overflow-hidden">
+                    <img id="modalImage" src="" alt="" class="max-h-[60vh] w-auto object-contain">
+                </div>
+                
+                <div class="flex space-x-4 mt-4">
+                    <button id="downloadImage" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center text-sm md:text-base">
+                        <i class="fas fa-download mr-2"></i>
+                        <span id="downloadText">ទាញយក</span>
+                    </button>
+                    <button id="shareImage" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center text-sm md:text-base">
+                        <i class="fas fa-share-alt mr-2"></i>
+                        <span id="shareText">ចែករំលែក</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script>
+        // Language data
+        const translations = {
+            kh: {
+                // Site title
+                siteTitle: "វីរជនកម្ពុជា",
+                siteSubtitle: "ក្នុងការការពារព្រំដែនជាតិ",
+                langButton: "EN",
+                
+                // Hero section
+                heroTitle: "ការរំលឹកដល់វីរជនកម្ពុជា",
+                heroText: "ជាតិយើងនឹងចងចាំជារៀងរហូតចំពោះការតស៊ូ និងការលះបង់ដ៏ឧត្តមរបស់វីរជនកម្ពុជាដែលបានថ្វាយជីវិតក្នុងការការពារបូរណភាពទឹកដីជាតិ។",
+                heroButton: "វីរជនដែលបានពលី",
+                
+                // Memorial section
+                memorialTitle: "វីរជនដែលបានពលី",
+                memorialText: "យើងសូមថ្លែងអំណរគុណដល់ទាហានកម្ពុជាដែលបានពលីក្នុងសមរភូមិ ដើម្បីការពារព្រំដែនជាតិពីការឈ្លានពាន។",
+                tributeBtnText: "អុជទៀនធ្វើសក្ការៈ",
+                tributeMessage: "ពួកយើងនឹងមិនភ្លេចអ្នកទេ។ សូមអរគុណចំពោះការលះបង់របស់អ្នកដើម្បីជាតិមាតុភូមិ។",
+                
+                // History section
+                historyTitle: "ប្រវត្តិសាស្ត្រនៃការការពារព្រំដែន",
+                historyText: "ការការពារបូរណភាពទឹកដីជាតិគឺជាកាតព្វកិច្ចសំខាន់បំផុតមួយរបស់ប្រទេសជាតិ។ យើងត្រូវតែចងចាំពីការតស៊ូមេត្រីនិងការលះបង់របស់វីរជន។",
+                timeline1Title: "តំបន់មុំបី",
+                timeline1Desc: "ករណីផ្ទុះអាវុធនៅតំបន់មុំបី យោធាថៃបានបាញ់ប្រហារទៅលើទាហានកម្ពុជាម្នាក់ស្លា​ប់​នៅ​ក្នុង​លេណដ្ឋាន",
+                timeline2Title: "ការព្រមានព្រំដែនបន្ត",
+                timeline2Desc: "ការប៉ះទង្គិចព្រំដែននៅតែបន្ត ដោយសារទាហានថៃបានធ្វើការដាក់បន្លាលួសនៅលើទឹកដីកម្ពុជានិងផ្ទះសម្បែងប្រជាជនដែលរំលោភលើដែនដីកម្ពុជា ក៏ប៉ុន្តែកម្ពុជាមានការអត់ធ្មត់ខ្ពស់ ដើម្បីបញ្ក្ចៀសសង្រ្កាម។",
+                timeline3Title: "ថៃឈ្លានពានកម្ពុជាម្ដងទៀត",
+                timeline3Desc: "ម៉ោងប្រហែល ០២:១៥ រសៀល ថ្ងៃទី ០៧ ខែធ្នូ កងកម្លាំងយោធាថៃបានផ្តួចផ្តើមការវាយប្រហារទៅលើកងកម្លាំងកម្ពុជានៅតំបន់ព្រលៀនថ្ម ក្នុងស្រុកជាំក្សាន្ត ខេត្តព្រះវិហារ។ កងកម្លាំងកម្ពុជាបានទាក់ទងទៅភាគីថៃភ្លាមៗ ដើម្បីបញ្ឈប់ការបាញ់ប្រហារមកលើកងកម្លាំងកម្ពុជា ដោយសារភាគីកម្ពុជាមិនបានសងសឹក។ ក្រោយមក កងកម្លាំងយោធាថៃបានបញ្ឈប់ការបាញ់ប្រហារនៅម៉ោង ០២:៣២ រសៀល។ ​បន្ទាប់មកថៃក៏នៅតែបន្តឈ្លានពានចូលទឹកដីកម្ពុជា កម្ពុជាបានប្រើសិទ្ធការពារខ្លួនតបតទៅថៃវិញ",
+                
+                // About section
+                aboutTitle: "អំពីគេហទំព័រនេះ",
+                purposeTitle: "គោលបំណង",
+                purposeText1: "គេហទំព័រនេះត្រូវបានបង្កើតឡើងដើម្បីរំលឹក និងគោរពវីរជនកម្ពុជាដែលបានលះបង់ជីវិតក្នុងការការពារបូរណភាពទឹកដីជាតិពីការឈ្លានពាន។",
+                purposeText2: "យើងជឿជាក់ថា ការចងចាំការលះបង់របស់ពួកគេគឺជាវិធីមួយដើម្បីថ្លែងអំណរគុណ និងធានាថាក្មេងៗជំនាន់ក្រោយនឹងដឹងពីប្រវត្តិសាស្ត្ររបស់ជាតិ។",
+                messageTitle: "សារពីអ្នកបង្កើត",
+                messageText: "\"ការលះបង់របស់វីរជនកម្ពុជាគួរតែត្រូវបានគេចងចាំជានិរន្តរ៍។ ពួកគាត់បានពលីជីវិតដើម្បីការពារមាតុភូមិរបស់ពួកយើង។ យើងត្រូវតែដឹងគុណ និងចងចាំពូកគាត់។\"",
+                creatorTitle: "ហាក់ ឆៃហ៊ាង",
+                creatorLocation: "ភ្នំពេញ, កម្ពុជា",
+                
+                // Footer
+                footerTitle: "វីរជនកម្ពុជា",
+                footerSubtitle: "ក្នុងការការពារព្រំដែនជាតិ",
+                footerText: "គេហទំព័រនេះឧទ្ទិសដល់វីរជនកម្ពុជាទាំងឡាយដែលបានលះបង់ជីវិតក្នុងការការពារបូរណភាពទឹកដីជាតិ។",
+                copyright: "© 2025 វីរជនកម្ពុជា. រក្សាសិទ្ធិគ្រប់យ៉ាង។",
+                footerQuote: "\"យើងនឹងមិនភ្លេចការលះបង់របស់អ្នកទេ\"",
+                
+                // Modal texts
+                downloadText: "ទាញយក",
+                shareText: "ចែករំលែក"
+            },
+            en: {
+                // Site title
+                siteTitle: "Cambodian Heroes",
+                siteSubtitle: "In defense of national borders",
+                langButton: "ខ្មែរ",
+                
+                // Hero section
+                heroTitle: "Remembering Cambodian Heroes",
+                heroText: "Our nation will forever remember the courageous struggle and supreme sacrifice of Cambodian heroes who gave their lives defending the territorial integrity of our homeland.",
+                heroButton: "Visit Memorial Wall",
+                
+                // Memorial section
+                memorialTitle: "Memorial Wall",
+                memorialText: "We pay tribute to Cambodian soldiers who died in battle, defending our national borders from invasion.",
+                tributeBtnText: "Light a Memorial Candle",
+                tributeMessage: "We will never forget you. Thank you for your sacrifice for our country.",
+                
+                // History section
+                historyTitle: "History of Border Defense",
+                historyText: "Defending territorial integrity is one of the most important duties of a nation. We must remember the courageous struggle and sacrifice of our heroes.",
+                timeline1Title: "Mom 3 Area",
+                timeline1Desc: "In the case of a gun explosion in the Mom Tei area, the Thai military shot and killed One Cambodian soldier in a trench.",
+                timeline2Title: "Border Warning Continues",
+                timeline2Desc: "Border clashes continue as Thai soldiers set up barbed wire on Cambodian territory and encroached on the homes of people who had encroached on Cambodian territory, but Cambodia has shown great restraint in avoiding conflict.",
+                timeline3Title: "Ongoing Border Tensions",
+                timeline3Desc: "Around 2:15 PM on December 7, Thai military forces initiated an attack on Cambodian forces in the Pralean Thmor area, in Choam Ksan district, Preah Vihear province. The Cambodian forces immediately contacted the Thai side to request that they stop firing at Cambodian troops, as Cambodia had not retaliated. Later, the Thai military ceased firing at 2:32 PM. After that, Thailand continued to intrude into Cambodian territory, and Cambodia exercised its right to self-defense in response.",
+                
+                // About section
+                aboutTitle: "About This Website",
+                purposeTitle: "Purpose",
+                purposeText1: "This website was created to remember and honor Cambodian heroes who sacrificed their lives defending the territorial integrity of the nation from invasion.",
+                purposeText2: "We believe that remembering their sacrifice is a way to express gratitude and ensure that future generations know the nation's history.",
+                messageTitle: "Message from the Creator",
+                messageText: "\"The sacrifices of Cambodian heroes should be remembered forever. They sacrificed their lives to protect our homeland. We must be grateful and remember them.\"",
+                creatorTitle: "Hak Chaiheang",
+                creatorLocation: "Phnom Penh, Cambodia",
+                
+                // Footer
+                footerTitle: "Cambodian Heroes",
+                footerSubtitle: "In defense of national borders",
+                footerText: "This website is dedicated to all Cambodian heroes who sacrificed their lives defending the territorial integrity of the nation.",
+                copyright: "© 2025 Cambodian Heroes. All rights reserved.",
+                footerQuote: "\"We will not forget your sacrifice\"",
+                
+                // Modal texts
+                downloadText: "Download",
+                shareText: "Share"
+            }
+        };
+        
+        // Initialize with Khmer language
+        let currentLang = 'kh';
+        
+        // Array to store all soldier data
+        let soldiersData = [];
+        let currentImageIndex = 0;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleLangBtn = document.getElementById('toggleLang');
+            const langText = document.getElementById('langText');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuIcon = document.getElementById('menuIcon');
+            const tributeBtn = document.getElementById('tributeBtn');
+            const candleArea = document.getElementById('candleArea');
+            
+            // Modal elements
+            const imageModal = document.getElementById('imageModal');
+            const modalOverlay = document.getElementById('modalOverlay');
+            const closeModalBtn = document.getElementById('closeModal');
+            const prevImageBtn = document.getElementById('prevImage');
+            const nextImageBtn = document.getElementById('nextImage');
+            const modalImage = document.getElementById('modalImage');
+            const modalSoldierName = document.getElementById('modalSoldierName');
+            const modalSoldierInfo = document.getElementById('modalSoldierInfo');
+            const modalSoldierLocation = document.getElementById('modalSoldierLocation');
+            const downloadImageBtn = document.getElementById('downloadImage');
+            const shareImageBtn = document.getElementById('shareImage');
+            const downloadText = document.getElementById('downloadText');
+            const shareText = document.getElementById('shareText');
+            
+            // Function to load local images and collect soldier data
+            function loadLocalImages() {
+                const imageContainers = document.querySelectorAll('.soldier-img');
+                
+                imageContainers.forEach((container, index) => {
+                    const imgSrc = container.getAttribute('data-src');
+                    const soldierCard = container.closest('.soldier-card');
+                    const soldierName = soldierCard.querySelector('.khmer-heading').textContent;
+                    const soldierInfo = soldierCard.querySelector('.text-gray-600').textContent;
+                    const soldierLocation = soldierCard.querySelector('.text-gray-500 span').textContent;
+                    
+                    // Store soldier data
+                    soldiersData.push({
+                        index: index,
+                        src: imgSrc,
+                        name: soldierName,
+                        info: soldierInfo,
+                        location: soldierLocation,
+                        container: container
+                    });
+                    
+                    // Add click event to image container
+                    const imgContainer = container.parentElement;
+                    imgContainer.addEventListener('click', () => openModal(index));
+                    
+                    // Try to load the local image
+                    if (imgSrc) {
+                        const img = new Image();
+                        img.onload = function() {
+                            container.style.backgroundImage = `url('${imgSrc}')`;
+                            container.classList.remove('fallback');
+                        };
+                        img.onerror = function() {
+                            console.warn(`Failed to load image: ${imgSrc}`);
+                        };
+                        img.src = imgSrc;
+                    }
+                });
+            }
+            
+            // Function to open modal with specific image
+            function openModal(index) {
+                currentImageIndex = index;
+                const soldier = soldiersData[index];
+                
+                // Set modal content
+                modalImage.src = soldier.src || '';
+                modalSoldierName.textContent = soldier.name || '';
+                modalSoldierInfo.textContent = soldier.info || '';
+                modalSoldierLocation.textContent = soldier.location || '';
+                
+                // Set button texts based on current language
+                if (currentLang === 'kh') {
+                    downloadText.textContent = 'ទាញយក';
+                    shareText.textContent = 'ចែករំលែក';
+                } else {
+                    downloadText.textContent = 'Download';
+                    shareText.textContent = 'Share';
+                }
+                
+                // Show modal
+                imageModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Function to close modal
+            function closeModal() {
+                imageModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+            
+            // Function to navigate to previous image
+            function prevImage() {
+                currentImageIndex = (currentImageIndex - 1 + soldiersData.length) % soldiersData.length;
+                openModal(currentImageIndex);
+            }
+            
+            // Function to navigate to next image
+            function nextImage() {
+                currentImageIndex = (currentImageIndex + 1) % soldiersData.length;
+                openModal(currentImageIndex);
+            }
+            
+            // Function to download image
+            function downloadImage() {
+                const soldier = soldiersData[currentImageIndex];
+                const link = document.createElement('a');
+                link.href = soldier.src;
+                link.download = `cambodian-hero-${currentImageIndex + 1}.jpg`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+            
+            // Function to share image
+            function shareImage() {
+                const soldier = soldiersData[currentImageIndex];
+                const shareText = `${soldier.name} - ${soldier.info}`;
+                const shareUrl = window.location.href;
+                
+                if (navigator.share) {
+                    navigator.share({
+                        title: currentLang === 'kh' ? 'វីរជនកម្ពុជា' : 'Cambodian Heroes',
+                        text: shareText,
+                        url: shareUrl
+                    });
+                } else {
+                    // Fallback: Copy to clipboard
+                    const textToCopy = `${shareText}\n${shareUrl}`;
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        alert(currentLang === 'kh' ? 'ចម្លងទៅក្តារតម្បៀតហើយ!' : 'Copied to clipboard!');
+                    });
+                }
+            }
+            
+            // Set initial language (Khmer)
+            function setLanguage(lang) {
+                currentLang = lang;
+                
+                // Update all elements with translations
+                for (const [key, value] of Object.entries(translations[lang])) {
+                    const element = document.getElementById(key);
+                    if (element) {
+                        element.textContent = value;
+                    }
+                }
+                
+                // Update navigation links
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    const khText = link.getAttribute('data-kh');
+                    const enText = link.getAttribute('data-en');
+                    link.textContent = lang === 'kh' ? khText : enText;
+                });
+                
+                // Update language button text
+                langText.textContent = lang === 'kh' ? translations.kh.langButton : translations.en.langButton;
+                
+                // Update modal buttons if modal is open
+                if (!imageModal.classList.contains('hidden')) {
+                    downloadText.textContent = lang === 'kh' ? 'ទាញយក' : 'Download';
+                    shareText.textContent = lang === 'kh' ? 'ចែករំលែក' : 'Share';
+                }
+            }
+            
+            // Event listeners for modal
+            modalOverlay.addEventListener('click', closeModal);
+            closeModalBtn.addEventListener('click', closeModal);
+            prevImageBtn.addEventListener('click', prevImage);
+            nextImageBtn.addEventListener('click', nextImage);
+            downloadImageBtn.addEventListener('click', downloadImage);
+            shareImageBtn.addEventListener('click', shareImage);
+            
+            // Keyboard navigation for modal
+            document.addEventListener('keydown', (e) => {
+                if (!imageModal.classList.contains('hidden')) {
+                    if (e.key === 'Escape') closeModal();
+                    if (e.key === 'ArrowLeft') prevImage();
+                    if (e.key === 'ArrowRight') nextImage();
+                }
+            });
+            
+            // Language toggle event listener
+            toggleLangBtn.addEventListener('click', () => {
+                const newLang = currentLang === 'kh' ? 'en' : 'kh';
+                setLanguage(newLang);
+            });
+            
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('open');
+                menuIcon.classList.toggle('fa-bars');
+                menuIcon.classList.toggle('fa-times');
+            });
+            
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('#mobileMenu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('open');
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                });
+            });
+            
+            // Tribute button functionality
+            tributeBtn.addEventListener('click', () => {
+                candleArea.classList.toggle('hidden');
+                
+                if (!candleArea.classList.contains('hidden')) {
+                    // Create more candles with animation
+                    setTimeout(() => {
+                        const candleContainer = candleArea.querySelector('.flex');
+                        for (let i = 0; i < 5; i++) {
+                            const candle = document.createElement('div');
+                            candle.className = 'candle animate-pulse';
+                            candle.style.animationDelay = `${i * 0.1}s`;
+                            candle.innerHTML = `
+                                <div class="w-3 h-6 md:w-4 md:h-8 bg-yellow-300 mx-auto rounded-t-lg"></div>
+                                <div class="w-4 h-1 md:w-6 md:h-2 bg-yellow-500 mx-auto"></div>
+                            `;
+                            candleContainer.appendChild(candle);
+                        }
+                    }, 100);
+                    
+                    // Change button text temporarily
+                    const originalText = tributeBtn.innerHTML;
+                    if (currentLang === 'kh') {
+                        tributeBtn.innerHTML = '<i class="fas fa-heart mr-2"></i> អរគុណសម្រាប់ការគោរព';
+                    } else {
+                        tributeBtn.innerHTML = '<i class="fas fa-heart mr-2"></i> Thank you for paying respects';
+                    }
+                    
+                    setTimeout(() => {
+                        tributeBtn.innerHTML = originalText;
+                    }, 3000);
+                }
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Add fade-in animation to sections on scroll
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInOnScroll = () => {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Initialize fade elements
+            fadeElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            });
+            
+            // Load local images and initialize modal functionality
+            loadLocalImages();
+            
+            // Set initial language
+            setLanguage('kh');
+            
+            window.addEventListener('scroll', fadeInOnScroll);
+            fadeInOnScroll(); // Trigger on load
+        });
+    </script>
+</body>
+</html>
