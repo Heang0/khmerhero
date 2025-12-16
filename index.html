@@ -2419,7 +2419,7 @@
                 shareText: "Share"
             }
         };
-// Quote Overlay functionality
+
 const quoteOverlay = document.getElementById('quoteOverlay');
 const closeQuoteBtn = document.getElementById('closeQuote');
 let countdownTimer;
@@ -2486,7 +2486,6 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Show overlay when page loads (with slight delay for better UX)
 setTimeout(showQuoteOverlay, 500);
 
 // Update text based on language
@@ -2505,11 +2504,10 @@ function updateQuoteTexts(lang) {
             autoCloseText.innerHTML = 'បិទស្វ័យប្រវត្តិក្នុងរយៈពេល <span id="countdown">5</span> វិនាទី...';
         }
     }
-    
-    // Update the countdown element reference after language change
+
     countdownElement = document.getElementById('countdown');
     
-    // Update countdown text if overlay is showing
+
     if (quoteOverlay.classList.contains('show')) {
         // Restart countdown with new language
         startCountdown();
@@ -2517,8 +2515,6 @@ function updateQuoteTexts(lang) {
 }
 
 // Call this function in your setLanguage function
-// Add this line inside your existing setLanguage function:
-// updateQuoteTexts(lang);
         // Initialize with Khmer language
         let currentLang = 'kh';
         
@@ -2571,7 +2567,6 @@ function updateQuoteTexts(lang) {
                         container: container
                     });
                     
-                    // Add click event to image container
                     const imgContainer = container.parentElement;
                     imgContainer.addEventListener('click', () => openModal(index));
                     
@@ -2664,7 +2659,7 @@ function updateQuoteTexts(lang) {
                     });
                 }
             }
-// Add this line inside your existing setLanguage function:
+
 function setLanguage(lang) {
     currentLang = lang;
     
@@ -2693,7 +2688,7 @@ function setLanguage(lang) {
     }
     
     // Update quote overlay texts
-    updateQuoteTexts(lang); // Add this line
+    updateQuoteTexts(lang); 
 }
             
             // Event listeners for modal
@@ -2787,7 +2782,7 @@ function setLanguage(lang) {
                 });
             });
             
-            // Add fade-in animation to sections on scroll
+            
             const fadeElements = document.querySelectorAll('.fade-in');
             
             const fadeInOnScroll = () => {
@@ -2809,10 +2804,9 @@ function setLanguage(lang) {
                 element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
             });
             
-            // Load local images and initialize modal functionality
+
             loadLocalImages();
-            
-            // Set initial language
+
             setLanguage('kh');
             
             window.addEventListener('scroll', fadeInOnScroll);
