@@ -2637,7 +2637,8 @@ function updateQuoteTexts(lang) {
                 link.click();
                 document.body.removeChild(link);
             }
-
+            
+            // Function to share image
             function shareImage() {
                 const soldier = soldiersData[currentImageIndex];
                 const shareText = `${soldier.name} - ${soldier.info}`;
@@ -2650,7 +2651,7 @@ function updateQuoteTexts(lang) {
                         url: shareUrl
                     });
                 } else {
-               
+                    // Fallback: Copy to clipboard
                     const textToCopy = `${shareText}\n${shareUrl}`;
                     navigator.clipboard.writeText(textToCopy).then(() => {
                         alert(currentLang === 'kh' ? 'ចម្លងទៅក្តារតម្បៀតហើយ!' : 'Copied to clipboard!');
@@ -2661,7 +2662,7 @@ function updateQuoteTexts(lang) {
 function setLanguage(lang) {
     currentLang = lang;
     
-
+    // Update all elements with translations
     for (const [key, value] of Object.entries(translations[lang])) {
         const element = document.getElementById(key);
         if (element) {
@@ -2669,23 +2670,23 @@ function setLanguage(lang) {
         }
     }
     
-
+    // Update navigation links
     document.querySelectorAll('.nav-link').forEach(link => {
         const khText = link.getAttribute('data-kh');
         const enText = link.getAttribute('data-en');
         link.textContent = lang === 'kh' ? khText : enText;
     });
     
-
+    // Update language button text
     langText.textContent = lang === 'kh' ? translations.kh.langButton : translations.en.langButton;
     
-
+    // Update modal buttons if modal is open
     if (!imageModal.classList.contains('hidden')) {
         downloadText.textContent = lang === 'kh' ? 'ទាញយក' : 'Download';
         shareText.textContent = lang === 'kh' ? 'ចែករំលែក' : 'Share';
     }
     
-
+    // Update quote overlay texts
     updateQuoteTexts(lang); 
 }
             
@@ -2719,7 +2720,7 @@ function setLanguage(lang) {
                 menuIcon.classList.toggle('fa-times');
             });
             
-        
+            // Close mobile menu when clicking a link
             document.querySelectorAll('#mobileMenu a').forEach(link => {
                 link.addEventListener('click', () => {
                     mobileMenu.classList.remove('open');
@@ -2728,10 +2729,12 @@ function setLanguage(lang) {
                 });
             });
             
+            // Tribute button functionality
             tributeBtn.addEventListener('click', () => {
                 candleArea.classList.toggle('hidden');
                 
                 if (!candleArea.classList.contains('hidden')) {
+                    // Create more candles with animation
                     setTimeout(() => {
                         const candleContainer = candleArea.querySelector('.flex');
                         for (let i = 0; i < 5; i++) {
@@ -2746,6 +2749,7 @@ function setLanguage(lang) {
                         }
                     }, 100);
                     
+                    // Change button text temporarily
                     const originalText = tributeBtn.innerHTML;
                     if (currentLang === 'kh') {
                         tributeBtn.innerHTML = '<i class="fas fa-heart mr-2"></i> អរគុណសម្រាប់ការគោរព';
@@ -2759,6 +2763,7 @@ function setLanguage(lang) {
                 }
             });
             
+            // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -2804,7 +2809,8 @@ function setLanguage(lang) {
             setLanguage('kh');
             
             window.addEventListener('scroll', fadeInOnScroll);
-            fadeInOnScroll(); 
+            fadeInOnScroll(); // Trigger on load
+        });
     </script>
 </body>
 </html>
